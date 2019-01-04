@@ -15,8 +15,8 @@ var login = require("./routes/usersManagers/login");
 var commerces = require("./routes/commerces");
 var app = express();
 
-var port = 3000; 
-
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
 var socket_io = require("socket.io");
 
 var io = socket_io();
@@ -42,7 +42,7 @@ app.use("/api", test);
 app.use("/api", login);
 
 
-io.listen(app.listen(port, function(){
+io.listen(app.listen(port,server_ip_address, function(){
 	console.log("le server ecoute sur le port", port);
 }));
 
