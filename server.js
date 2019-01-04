@@ -4,6 +4,8 @@ var bodyParser = require("body-parser");
 
 var index = require("./routes/index");
 var bookings = require("./routes/bookings");
+var cities = require("./routes/cities");
+var lines = require("./routes/lines"); // Page for of lInes
 var test = require("./routes/test");
 var commerceLocation = require("./routes/commerceLocation");
 //USERS MANAGER ROUTES
@@ -13,8 +15,8 @@ var login = require("./routes/usersManagers/login");
 var commerces = require("./routes/commerces");
 var app = express();
 
-var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var port = 3000; 
+
 var socket_io = require("socket.io");
 
 var io = socket_io();
@@ -32,13 +34,15 @@ app.use(bodyParser.urlencoded({extended:true}));
 //Routes
 app.use("/", index);
 app.use("/api", bookings);
+app.use("/api", cities);
+app.use("/api", lines);
 app.use("/api", commerceLocation);
 app.use("/api", commerces);
 app.use("/api", test);
 app.use("/api", login);
 
 
-io.listen(app.listen(port,server_ip_address, function(){
+io.listen(app.listen(port, function(){
 	console.log("le server ecoute sur le port", port);
 }));
 
