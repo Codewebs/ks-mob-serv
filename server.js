@@ -43,7 +43,7 @@ app.use("/api", test);
 app.use("/api", login);
 
 
-io.listen(app.listen(port,server_ip_address, function(){
+io.listen(app.listen(server_port,server_ip_address, function(){
 	console.log("le server ecoute sur le port", port);
 }));
 
