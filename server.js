@@ -15,7 +15,7 @@ var login = require("./routes/usersManagers/login");
 var commerces = require("./routes/commerces");
 var app = express();
 
-var port = 8080
+var port = process.env.PORT || 8080
 
 
 var socket_io = require("socket.io");
