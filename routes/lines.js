@@ -35,7 +35,17 @@ router.get("/line/:id", function(req, res, next){
 		res.send(liner);
 	})
 });
+router.get('/liners/:text', function(req, res, next){
+	var io = req.app.io;
 
+	db.lines.find({lineName: {$regex: ".*" + req.params.text + ".*"} } , function(err, lines){
+		if(err){
+			res.send(err);
+		}
+		res.json(lines);
+	})
+
+});
 
 // Ajouter une nouvelle ligne et definir sa route
 router.get("/lines/", function(req, res, next){
