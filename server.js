@@ -7,6 +7,7 @@ var bookings = require("./routes/bookings");
 var cities = require("./routes/cities");
 var lines = require("./routes/lines"); // Page for of lInes
 var test = require("./routes/test");
+var test = require("./routes/checkpoints");
 var commerceLocation = require("./routes/commerceLocation");
 //USERS MANAGER ROUTES
 var login = require("./routes/usersManagers/login");
