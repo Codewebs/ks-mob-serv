@@ -16,5 +16,15 @@ router.get('/cities/', function(req, res, next){
 	})
 
 });
+router.get('/cities/:text', function(req, res, next){
+	var io = req.app.io;
 
+	db.cities.find({cityName: {$regex: ".*" + req.params.text + ".*"} } , function(err, cities){
+		if(err){
+			res.send(err);
+		}
+		res.json(cities);
+	})
+
+});
 module.exports = router;
