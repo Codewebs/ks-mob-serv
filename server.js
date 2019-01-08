@@ -6,8 +6,8 @@ var index = require("./routes/index");
 var bookings = require("./routes/bookings");
 var cities = require("./routes/cities");
 var lines = require("./routes/lines"); // Page for of lInes
-var test = require("./routes/test");
-var test = require("./routes/checkpoints");
+var checkpoints = require("./routes/checkpoints");
+var waypoints = require("./routes/waypoints");
 var commerceLocation = require("./routes/commerceLocation");
 //USERS MANAGER ROUTES
 var login = require("./routes/usersManagers/login");
@@ -40,7 +40,8 @@ app.use("/api", cities);
 app.use("/api", lines);
 app.use("/api", commerceLocation);
 app.use("/api", commerces);
-app.use("/api", test);
+app.use("/api", checkpoints);
+app.use("/api", waypoints);
 app.use("/api", login);
 
 
