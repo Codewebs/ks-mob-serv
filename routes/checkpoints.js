@@ -24,6 +24,15 @@ router.get("/checkpoints/", function(req,res, next){
 		res.json(checkpoints);
 	})
 });
+//Tous les checkpoints de la Base de données contenat le text?
+router.get("/checkpointname/:text", function(req,res, next){
+	db.checkpoints.find(function(err,checkpoints){
+		if(err){
+			res.send(err);
+		}
+		res.json(checkpoints);
+	})
+});
 //Un checkpoints en particulier
 router.get("/checkpoint/:id", function(req, res, next){
 	var io = req.app.io;
